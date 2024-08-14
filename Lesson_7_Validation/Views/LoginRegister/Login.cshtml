@@ -1,0 +1,42 @@
+﻿@using Lesson_7_Validation.Models.ViewModels
+@{
+    ViewData["Title"] = "Login Page";
+}
+@model LoginVM;
+
+
+<div class="wrapper">
+    <form asp-controller="LoginRegister" asp-action="Login">
+
+     
+        <h1>Login</h1>
+
+        @if (ViewBag.PostAttempt)
+        {
+            <div asp-validation-summary="ModelOnly" class="text-white"></div>
+        }
+
+        <div class="input-box">
+            <input asp-for="Username" class="form-control" placeholder="Username" required />
+            <i class='bx bxs-user'></i>
+        </div>
+
+        <div class="input-box">
+            <input asp-for="Password" type="password" class="form-control" placeholder="Password" required />
+            <i class='bx bxs-lock-alt'></i>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="remember-forgot">
+            <label><input type="checkbox" /> Remember me </label>
+            <a asp-controller="LoginRegister" asp-action="ForgotPassword">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+       
+
+        <div class="register-link">
+            <p>Don't have an account? <a asp-controller="LoginRegister" asp-action="Register">Register</a></p>
+        </div>
+    </form>
+</div>
